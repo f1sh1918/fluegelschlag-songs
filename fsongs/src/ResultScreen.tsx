@@ -1,5 +1,7 @@
-import React, {ReactElement, useEffect} from 'react';
-import {FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View} from 'react-native'
+import React, {ReactElement} from 'react';
+import {FlatList, Modal, SafeAreaView, Text, View} from 'react-native'
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+
 // @ts-ignore
 import CloseIcon from "../assets/icons/close-circle-icon.svg";
 // @ts-ignore
@@ -24,14 +26,15 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
     const renderItem = ({item}: { item: RatedBird }) => (
         <View style={{
             flexDirection: 'row',
-            marginTop: 10,
+            marginTop: 8,
             backgroundColor: 'white',
             paddingVertical: 20,
-            paddingHorizontal: 75,
+            paddingHorizontal: 30,
             borderRadius: 10,
+            width: wp('90%'),
             justifyContent: 'space-between'
         }}>
-            <Text style={{color: colors.black, fontSize: 20, fontWeight: 'bold'}}>{item.name}:</Text>
+            <Text style={{color: colors.black, fontSize: 20, fontWeight: 'bold'}}>{item.name}</Text>
             <Text style={{
                 color: getColor(Math.round(item.rate * 100)),
                 marginLeft: 20,
@@ -66,10 +69,11 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                 backgroundColor: colors.gray,
                 alignSelf: 'stretch',
                 alignItems: 'center',
-                paddingVertical: 30
+                paddingVertical: 10
             }}>
+                <Text style={{color: colors.black, margin: 20, fontSize: 24, fontWeight:'bold'}}>Weitere Ergebnisse</Text>
                 <FlatList
-                    data={ratedBirds.filter((bird) => bird.rate > 0.5)}
+                    data={ratedBirds}
                     renderItem={renderItem}
                     keyExtractor={item => item.latin}
                 />
