@@ -46,13 +46,13 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
 
     return (
         <Modal visible={showModal}>
-            <View
+            <SafeAreaView
                 style={{backgroundColor: colors.gray, flexDirection: 'row', paddingVertical: 15}}>
                 <Icon onPress={onModalClose}>
                     <CloseIcon/>
                 </Icon>
 
-            </View>
+            </SafeAreaView>
             <View style={{marginTop: 20}}>
                 <View>
                     <Text style={{fontSize: 32, textAlign: 'center', color: colors.black}}>{result.name} </Text>

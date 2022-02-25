@@ -6,7 +6,6 @@ import axios from "axios";
 import {stringSimilarity} from "string-similarity-js";
 import SoundPlayer from 'react-native-sound-player';
 
-
 // @ts-ignore
 import RetryIcon from './assets/icons/repeat-icon.svg'
 // @ts-ignore
@@ -136,7 +135,7 @@ const App = () => {
 
         })
         if (matching < matchingRate) {
-            setTimeout(() => clearScan(), 5000)
+         //   setTimeout(() => clearScan(), 5000)
         }
 
         setRate(Math.round(matching * 100))
