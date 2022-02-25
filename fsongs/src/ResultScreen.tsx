@@ -1,25 +1,33 @@
 import React, {ReactElement, useEffect} from 'react';
-import {Modal, Text, TouchableOpacity, View} from 'react-native'
+import {FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View} from 'react-native'
 // @ts-ignore
 import CloseIcon from "../assets/icons/close-circle-icon.svg";
 // @ts-ignore
 import Volume from '../assets/icons/volume-up-circle-icon.svg'
-import {Result} from "../App";
+import {RatedBird, Result} from "../App";
 import Icon from "./components/Icon";
-import SoundPlayer from "react-native-sound-player";
 import {colors} from "./constants/colors";
+import getColor from "./utils/getColors";
 
-type ResultScreenProps = { showModal: boolean; onModalClose: () => void; result: Result, onPressVolume: ()=>void }
-
-
+type ResultScreenProps = { showModal: boolean; onModalClose: () => void; result: Result, onPressVolume: () => void, isPlaying: boolean, ratedBirds: RatedBird[] }
 
 
 const ResultScreen: React.FC<ResultScreenProps> = ({
                                                        showModal,
                                                        onModalClose,
                                                        result,
-    onPressVolume
+                                                       onPressVolume,
+                                                       isPlaying,
+                                                       ratedBirds
                                                    }: ResultScreenProps): ReactElement => {
+
+    const renderItem = ({item}: { item: RatedBird }) =>  (
+            <View style={{flexDirection: 'row', marginTop:10, backgroundColor: 'white', paddingVertical: 20, paddingHorizontal:50, borderRadius:10, justifyContent:'space-between'}}>
+                <Text style={{color: colors.black, fontSize: 20, fontWeight:'bold'}}>{item.name}:</Text>
+                <Text style={{color: getColor(Math.round(item.rate * 100)), marginLeft: 20, fontSize: 20}}>{Math.round(item.rate * 100)}%</Text>
+            </View>
+        );
+
 
     return (
         <Modal visible={showModal}>
@@ -35,9 +43,19 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                     <Text style={{fontSize: 32, textAlign: 'center', color: colors.black}}>{result.name} </Text>
                     <Text style={{fontSize: 16, textAlign: 'center', color: colors.black}}>{result.latin}</Text>
                 </View>
-               <View style={{alignSelf:'center', flex:1, marginTop: 80}}><Icon onPress={()=>onPressVolume()}><Volume fill={colors.black} width={60} height={60}/></Icon>
-               </View>
+                <View style={{alignSelf: 'center',  marginVertical: 50}}><Icon
+                    onPress={() => onPressVolume()}><Volume fill={isPlaying ? colors.red : colors.black} width={60}
+                                                            height={60}/></Icon>
+                </View>
+
             </View>
+            <SafeAreaView style={{flex: 1, backgroundColor:colors.gray, alignSelf:'stretch', alignItems:'center', paddingVertical: 30}}>
+                <FlatList
+                    data={ratedBirds}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.latin}
+                />
+            </SafeAreaView>
         </Modal>
     );
 };

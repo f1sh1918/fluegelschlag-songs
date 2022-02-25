@@ -1,0 +1,52 @@
+{
+  "birds": [
+    {
+      "name": "Gimpel",
+      "latin": "Pyrrhula pyrrhula"
+    },
+    {
+      "name": "Rotkopfspecht",
+      "latin": "Melanerpes erythrocephalus"
+    },
+    {
+      "name": "Gartenbaumläufer",
+      "latin": "Certhia brachydactyla"
+    },
+    {
+      "name": "Blauflügel-Waldsänger",
+      "latin": "Vermivora cyanoptera"
+    },
+    {
+      "name": "Kapuzenwaldsänger",
+      "latin": "Setophaga citrina"
+    },
+    {
+      "name": "Schellente",
+      "latin": "Bucephala clangula"
+    },
+    {
+      "name": "Hausgimpel",
+      "latin": "Haemorhous mexicanus"
+    },
+    {
+      "name": "Nashornpelikan",
+      "latin": "Pelecanus erythrorhynchos"
+    },
+    {
+      "name": "Rotflügelstärling",
+      "latin": "Agelaius phoeniceus"
+    },
+    {
+      "name": "Rotschulterbussard",
+      "latin": "Buteo lineatus"
+    },
+    {
+      "name": "Rotschwanzbussard",
+      "latin": "Buteo jamaicensis"
+    },
+    {
+      "name": "Kohlmeise",
+      "latin": "Parus major"
+    }
+  ]
+}

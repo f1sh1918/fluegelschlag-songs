@@ -1,30 +1,11 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React, {useEffect, useState} from 'react';
-import {
-    Modal,
-    SafeAreaView,
-    StyleSheet, Text, TouchableOpacity, View
-
-} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import {RNCamera, TrackedTextFeature} from "react-native-camera";
-import birdData from './assets/birds.json';
+import birdData from './assets/data/birds.json';
 import axios from "axios";
 import {stringSimilarity} from "string-similarity-js";
 import SoundPlayer from 'react-native-sound-player';
 
-export type Result = {
-    name: string;
-    latin: string;
-}
 
 // @ts-ignore
 import RetryIcon from './assets/icons/repeat-icon.svg'
@@ -34,9 +15,9 @@ import ResultScreen from "./src/ResultScreen";
 import ScanInfo from "./src/components/ScanInfo";
 
 
-const getSoundFile = (song: Song): string => {
-    const baseUrl = song.sono.split("ffts");
-    return `https:${baseUrl[0]}${song.fileName}`
+export type Result = {
+    name: string;
+    latin: string;
 }
 
 type Song = {
@@ -49,6 +30,15 @@ type Bird = {
     song?: Song;
 }
 
+export type RatedBird = Bird & {
+    rate: number;
+}
+
+const getSoundFile = (song: Song): string => {
+    const baseUrl = song.sono.split("ffts");
+    return `https:${baseUrl[0]}${song.fileName}`
+}
+
 const App = () => {
 
     const [scanned, setScanned] = useState<boolean>(false);
@@ -57,6 +47,7 @@ const App = () => {
     const [showModal, setShowModal] = useState<boolean>(false);
     const [rate, setRate] = useState<number>(0);
     const [isPlaying, setIsPlaying] = useState<boolean>(true);
+    const [ratedBirds, setRatedBirds] = useState<RatedBird[]>([]);
 
 
     useEffect(() => {
@@ -72,19 +63,15 @@ const App = () => {
                                     sono: response?.data.recordings[0].sono.small
                                 }
                             })
-
-
                         })
                         .catch(function (error) {
                             console.log(error);
                         });
                 }
-
             }
-
         }
         ,
-        [JSON.stringify(scanResult)]
+        [scanResult?.name]
     )
     ;
 
@@ -131,35 +118,42 @@ const App = () => {
     }
 
     const checkBirdList = (name: string): Bird | null => {
+        const matchingRate = 0.7
         let matchingBird = null;
         let matching = 0;
+        const birdsArray: RatedBird[] = []
         birdData.birds.map(bird => {
+            const ratedBird = {...bird, rate: stringSimilarity(bird?.name?.trim(), name)}
+            birdsArray.push(ratedBird)
+
             if (matching < stringSimilarity(bird?.name?.trim(), name)) {
                 matching = stringSimilarity(bird?.name?.trim(), name)
-                setRate(Math.round(matching * 100))
-                if (matching > 0.7) {
+
+                if (matching > matchingRate) {
                     matchingBird = bird
                 }
             }
 
         })
+        if (matching < matchingRate) {
+            setTimeout(() => clearScan(), 5000)
+        }
+
+        setRate(Math.round(matching * 100))
+        setRatedBirds(birdsArray)
         return matchingBird
     }
 
+    const clearScan = () => {
+        setScanResult(null)
+        setScanned(false)
+    }
 
     const onModalClose = () => {
         setShowModal(false)
-        setScanResult(null)
-        setScanned(false)
         setBird(null)
-        SoundPlayer.stop()
-        setIsPlaying(false)
-    }
-
-
-    const retry = () => {
-        setScanResult(null)
-        setScanned(false)
+        clearScan()
+        stopSound()
     }
 
 
@@ -175,9 +169,11 @@ const App = () => {
 
     return (
         <SafeAreaView style={{flex: 1}}>
-            {scanResult && !bird && <ScanInfo rate={rate} result={scanResult} retry={retry}/>}
-            {bird ? <ResultScreen onPressVolume={onPressVolume} result={bird} showModal={showModal}
-                                  onModalClose={onModalClose}/> :
+            {scanResult && !bird && <ScanInfo rate={rate} result={scanResult} retry={clearScan}/>}
+            {bird ?
+                <ResultScreen ratedBirds={ratedBirds.sort((a, b) => b.rate-a.rate)} isPlaying={isPlaying}
+                              onPressVolume={onPressVolume} result={bird} showModal={showModal}
+                              onModalClose={onModalClose}/> :
                 <RNCamera
                     onTextRecognized={recognizeText}
                     style={{flex: 1}}
@@ -185,7 +181,7 @@ const App = () => {
         </SafeAreaView>
     );
 };
-
+// TODO add styles here
 const styles = StyleSheet.create({});
 
 export default App;
