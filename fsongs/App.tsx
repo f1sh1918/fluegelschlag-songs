@@ -135,7 +135,7 @@ const App = () => {
 
         })
         if (matching < matchingRate) {
-         //   setTimeout(() => clearScan(), 5000)
+            setTimeout(() => clearScan(), 5000)
         }
 
         setRate(Math.round(matching * 100))
@@ -170,7 +170,7 @@ const App = () => {
         <SafeAreaView style={{flex: 1}}>
             {scanResult && !bird && <ScanInfo rate={rate} result={scanResult} retry={clearScan}/>}
             {bird ?
-                <ResultScreen ratedBirds={ratedBirds.sort((a, b) => b.rate-a.rate)} isPlaying={isPlaying}
+                <ResultScreen ratedBirds={ratedBirds.sort((a, b) => b.rate - a.rate)} isPlaying={isPlaying}
                               onPressVolume={onPressVolume} result={bird} showModal={showModal}
                               onModalClose={onModalClose}/> :
                 <RNCamera
