@@ -21,12 +21,24 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                                                        ratedBirds
                                                    }: ResultScreenProps): ReactElement => {
 
-    const renderItem = ({item}: { item: RatedBird }) =>  (
-            <View style={{flexDirection: 'row', marginTop:10, backgroundColor: 'white', paddingVertical: 20, paddingHorizontal:50, borderRadius:10, justifyContent:'space-between'}}>
-                <Text style={{color: colors.black, fontSize: 20, fontWeight:'bold'}}>{item.name}:</Text>
-                <Text style={{color: getColor(Math.round(item.rate * 100)), marginLeft: 20, fontSize: 20}}>{Math.round(item.rate * 100)}%</Text>
-            </View>
-        );
+    const renderItem = ({item}: { item: RatedBird }) => (
+        <View style={{
+            flexDirection: 'row',
+            marginTop: 10,
+            backgroundColor: 'white',
+            paddingVertical: 20,
+            paddingHorizontal: 75,
+            borderRadius: 10,
+            justifyContent: 'space-between'
+        }}>
+            <Text style={{color: colors.black, fontSize: 20, fontWeight: 'bold'}}>{item.name}:</Text>
+            <Text style={{
+                color: getColor(Math.round(item.rate * 100)),
+                marginLeft: 20,
+                fontSize: 20
+            }}>{Math.round(item.rate * 100)}%</Text>
+        </View>
+    );
 
 
     return (
@@ -43,15 +55,21 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                     <Text style={{fontSize: 32, textAlign: 'center', color: colors.black}}>{result.name} </Text>
                     <Text style={{fontSize: 16, textAlign: 'center', color: colors.black}}>{result.latin}</Text>
                 </View>
-                <View style={{alignSelf: 'center',  marginVertical: 50}}><Icon
+                <View style={{alignSelf: 'center', marginVertical: 50}}><Icon
                     onPress={() => onPressVolume()}><Volume fill={isPlaying ? colors.red : colors.black} width={60}
                                                             height={60}/></Icon>
                 </View>
 
             </View>
-            <SafeAreaView style={{flex: 1, backgroundColor:colors.gray, alignSelf:'stretch', alignItems:'center', paddingVertical: 30}}>
+            <SafeAreaView style={{
+                flex: 1,
+                backgroundColor: colors.gray,
+                alignSelf: 'stretch',
+                alignItems: 'center',
+                paddingVertical: 30
+            }}>
                 <FlatList
-                    data={ratedBirds}
+                    data={ratedBirds.filter((bird) => bird.rate > 0.5)}
                     renderItem={renderItem}
                     keyExtractor={item => item.latin}
                 />
