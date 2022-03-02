@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {ActivityIndicator, Modal, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {RNCamera, TrackedTextFeature} from "react-native-camera";
 import birdData from './assets/data/birds.json';
 import axios from "axios";
@@ -47,6 +47,7 @@ const App = () => {
     const [rate, setRate] = useState<number>(0);
     const [isPlaying, setIsPlaying] = useState<boolean>(true);
     const [ratedBirds, setRatedBirds] = useState<RatedBird[]>([]);
+    const [bounds, setBounds] = useState<any>(null);
 
 
     useEffect(() => {
@@ -112,7 +113,8 @@ const App = () => {
         if (ocrElements.length > 2 && !scanned) {
             setScanned(true)
             setShowModal(true)
-            setTimeout(() => setScanResult({name: ocrElements[0]?.text, latin: ocrElements[1]?.text}), 1000)
+            setTimeout(() => setScanResult({name: ocrElements[0]?.text, latin: ocrElements[1]?.text}), 2000)
+            setBounds(ocrElements[0].bounds)
         }
     }
 
@@ -146,6 +148,7 @@ const App = () => {
     const clearScan = () => {
         setScanResult(null)
         setScanned(false)
+        setBounds(null)
     }
 
     const onModalClose = () => {
@@ -175,8 +178,27 @@ const App = () => {
                               onModalClose={onModalClose}/> :
                 <RNCamera
                     onTextRecognized={recognizeText}
+
                     style={{flex: 1}}
-                    captureAudio={false}/>}
+                    captureAudio={false}>
+                    {bounds && <View
+                        style={{
+                            borderWidth: 2,
+                            borderColor: '#fcba03',
+                            position: 'absolute',
+                            left: bounds?.origin.x - 20,
+                            top: bounds?.origin.y - 10,
+                            height: bounds?.size.height * 4,
+                            width: bounds?.size.width * 3
+                        }}
+                    />}
+                    {!scanResult && !bird &&
+                    <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 20}}>
+                        <ActivityIndicator size="large" color="#fcba03"/>
+                        <Text style={{color: '#fcba03', alignSelf: 'center', fontSize: 24, marginLeft: 20}}>Scanning
+                            ...</Text>
+                    </View>}
+                </RNCamera>}
         </SafeAreaView>
     );
 };
