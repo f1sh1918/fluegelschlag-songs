@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, SafeAreaView, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
 import {RNCamera, TrackedTextFeature} from "react-native-camera";
 import axios from "axios";
 import {stringSimilarity} from "string-similarity-js";
@@ -49,6 +49,7 @@ const App = () => {
     const [bounds, setBounds] = useState<any>(null);
     const [birdData, setBirdData] = useState<any>(null);
     const [sound, setSound] = useState<Sound | null>(null);
+    const {height, width} = useWindowDimensions();
 
     useEffect(() => {
         const url = 'https://ballonfabrik.org/wp-content/uploads/birds.json'
@@ -196,6 +197,17 @@ const App = () => {
         setIsPlaying(false)
     }
 
+    const getBounds = (coordinate: number, containerWidth: number): number => {
+        if (coordinate + containerWidth > width) {
+            return containerWidth - width
+        }
+        if (coordinate - containerWidth < 0) {
+            return containerWidth
+        }
+        return coordinate
+    }
+
+
     return (
         <SafeAreaView style={{flex: 1}}>
             {scanResult && !bird && <ScanInfo rate={rate} result={scanResult} retry={clearScan}/>}
@@ -214,7 +226,7 @@ const App = () => {
                             borderWidth: 2,
                             borderColor: '#fcba03',
                             position: 'absolute',
-                            left: bounds?.origin.x - 20,
+                            left: getBounds(bounds?.origin.x - 20, bounds?.size.width * 3),
                             top: bounds?.origin.y - 10,
                             height: bounds?.size.height * 4,
                             width: bounds?.size.width * 3

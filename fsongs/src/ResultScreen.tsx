@@ -76,7 +76,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                 <Text style={{color: colors.black, margin: 20, fontSize: 24, fontWeight: 'bold'}}>Weitere
                     Ergebnisse</Text>
                 <FlatList
-                    data={ratedBirds}
+                    data={ratedBirds.filter(bird=>bird.rate>0)}
                     renderItem={renderItem}
                     keyExtractor={item => item.latin}
                 />
