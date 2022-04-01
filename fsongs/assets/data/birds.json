@@ -1,52 +1,280 @@
 {
-  "birds": [
-    {
-      "name": "Gimpel",
-      "latin": "Pyrrhula pyrrhula"
-    },
-    {
-      "name": "Rotkopfspecht",
-      "latin": "Melanerpes erythrocephalus"
-    },
-    {
-      "name": "Gartenbaumläufer",
-      "latin": "Certhia brachydactyla"
-    },
-    {
-      "name": "Blauflügel-Waldsänger",
-      "latin": "Vermivora cyanoptera"
-    },
-    {
-      "name": "Kapuzenwaldsänger",
-      "latin": "Setophaga citrina"
-    },
-    {
-      "name": "Schellente",
-      "latin": "Bucephala clangula"
-    },
-    {
-      "name": "Hausgimpel",
-      "latin": "Haemorhous mexicanus"
-    },
-    {
-      "name": "Nashornpelikan",
-      "latin": "Pelecanus erythrorhynchos"
-    },
-    {
-      "name": "Rotflügelstärling",
-      "latin": "Agelaius phoeniceus"
-    },
-    {
-      "name": "Rotschulterbussard",
-      "latin": "Buteo lineatus"
-    },
-    {
-      "name": "Rotschwanzbussard",
-      "latin": "Buteo jamaicensis"
-    },
-    {
-      "name": "Kohlmeise",
-      "latin": "Parus major"
-    }
-  ]
+"birds": [
+ {
+   "name": "Gimpel",
+   "latin": "Pyrrhula pyrrhula"
+ },
+ {
+   "name": "Rotkopfspecht",
+   "latin": "Melanerpes erythrocephalus"
+ },
+ {
+   "name": "Gartenbaumläufer",
+   "latin": "Certhia brachydactyla"
+ },
+ {
+   "name": "Blauflügel-Waldsänger",
+   "latin": "Vermivora cyanoptera"
+ },
+ {
+   "name": "Kapuzenwaldsänger",
+   "latin": "Setophaga citrina"
+ },
+ {
+   "name": "Schellente",
+   "latin": "Bucephala clangula"
+ },
+ {
+   "name": "Hausgimpel",
+   "latin": "Haemorhous mexicanus"
+ },
+ {
+   "name": "Nashornpelikan",
+   "latin": "Pelecanus erythrorhynchos"
+ },
+ {
+   "name": "Rotflügelstärling",
+   "latin": "Agelaius phoeniceus"
+ },
+ {
+   "name": "Rotschulterbussard",
+   "latin": "Buteo lineatus"
+ },
+ {
+   "name": "Rotschwanzbussard",
+   "latin": "Buteo jamaicensis"
+ },
+ {
+   "name": "Kohlmeise",
+   "latin": "Parus major"
+ },
+ {
+   "name": "Nordamerik. Rohrdommel",
+   "latin": "Botaurus lentiginosus"
+ },
+ {
+   "name": "Halbmond-Löffelente",
+   "latin": "Spatula rhynchotis"
+ },
+ {
+   "name": "Blauhäher",
+   "latin": "Cyanocitta cristata"
+ },
+ {
+   "name": "Brillensichler",
+   "latin": "Plegadis chihi"
+ },
+ {
+   "name": "Indianermeise",
+   "latin": "Baeolophus bicolor"
+ },
+ {
+   "name": "Truthahngeier",
+   "latin": "Cathartes aura"
+ },
+ {
+   "name": "Veilchenschwalbe",
+   "latin": "Tachycineta thalassina"
+ },
+ {
+   "name": "Wiesenstärling",
+   "latin": "Sturnella neglecta"
+ },
+ {
+   "name": "Kieferntangare",
+   "latin": "Piranga ludoviciana"
+ },
+ {
+   "name": "Sumpfschwalbe",
+   "latin": "Tachycineta bicolor"
+ },
+ {
+   "name": "Schreikranich",
+   "latin": "Grus americana"
+ },
+ {
+   "name": "Truthuhn",
+   "latin": "Meleagris gallopavo"
+ },
+ {
+   "name": "Schlammtreter",
+   "latin": "Tringa semipalmata"
+ },
+ {
+   "name": "Wilsonbekassine",
+   "latin": "Gallinago delicata"
+ },
+ {
+   "name": "Graugans",
+   "latin": "Anser anser"
+ },
+ {
+   "name": "Australspornpieper",
+   "latin": "Anthus novaeseelandiae"
+ },
+ {
+   "name": "Purpurschwalbe",
+   "latin": "Progne subis"
+ },
+ {
+   "name": "Ohrenlerche",
+   "latin": "Eremophila alpestris"
+ },
+ {
+   "name": "Fasankuckuck",
+   "latin": "Centropus phasianinus"
+ },
+ {
+   "name": "Dickzissel",
+   "latin": "Spiza americana"
+ },
+ {
+   "name": "Ringschnabelmöwe",
+   "latin": "Larus delawarensis"
+ },
+ {
+   "name": "Diademhäher",
+   "latin": "Cyanocitta stelleri"
+ },
+ {
+   "name": "Drosselstelze",
+   "latin": "Grallina cyanoleuca"
+ },
+ {
+   "name": "Scharlachtrugschmätzer",
+   "latin": "Epthianura tricolor"
+ },
+ {
+   "name": "Wanderdrossel",
+   "latin": "Turdus migratorius"
+ },
+ {
+   "name": "Schwarzspecht",
+   "latin": "Dryocopus martius"
+ },
+ {
+   "name": "Götzenliest",
+   "latin": "Todiramphus sanctus"
+ },
+ {
+   "name": "Flötenvogel",
+   "latin": "Gymnorhina tibicen"
+ },
+ {
+   "name": "Friedenstäubchen",
+   "latin": "Geopelia placida"
+ },
+ {
+   "name": "Abbott-Tölpel",
+   "latin": "Papasula abbotti"
+ },
+ {
+   "name": "Thermometerhuhn",
+   "latin": "Leipoa ocellata"
+ },
+ {
+   "name": "Habicht",
+   "latin": "Accipiter gentilis"
+ },
+ {
+   "name": "Trompeterschwan",
+   "latin": "Cygnus buccinator"
+ },
+ {
+   "name": "Kanadaschnepfe",
+   "latin": "Scolopax minor"
+ },
+ {
+   "name": "Schleiereule",
+   "latin": "Tyto alba"
+ },
+ {
+   "name": "Amerik. Scherenschnabel",
+   "latin": "Rynchops niger"
+ },
+ {
+   "name": "Gambelmeise",
+   "latin": "Poecile gambeli"
+ },
+ {
+   "name": "Zilpzalp",
+   "latin": "Phylloscopus collybita"
+ },
+ {
+   "name": "Präriepieper",
+   "latin": "Anthus spragueii"
+ },
+ {
+   "name": "Knutt",
+   "latin": "Calidris canutus"
+ },
+ {
+   "name": "Pirol",
+   "latin": "Oriolus oriolus"
+ },
+ {
+   "name": "Grasammer",
+   "latin": "Passerculus sandwichensis"
+ },
+ {
+   "name": "Nachtreiher",
+   "latin": "Nycticorax nycticorax"
+ },
+ {
+   "name": "Königslöffler",
+   "latin": "Platalea regia"
+ },
+ {
+   "name": "Buchfink",
+   "latin": "Fringilla coelebs"
+ },
+ {
+   "name": "Ostkreischeule",
+   "latin": "Megascops asio"
+ },
+ {
+   "name": "Dunenspecht",
+   "latin": "Picoides pubescens"
+ },
+ {
+   "name": "Weißrückenspecht",
+   "latin": "Dendrocopos leucotos"
+ },
+ {
+   "name": "Schneeeule",
+   "latin": "Bubo scandiacus"
+ },
+ {
+   "name": "Schwarzschnabelelster",
+   "latin": "Pica hudsonia"
+ },
+ {
+   "name": "Elster",
+   "latin": "Pica pica"
+ },
+ {
+   "name": "Graureiher",
+   "latin": "Ardea cinerea"
+ },
+ {
+   "name": "Goldzeisig",
+   "latin": "Spinus tristes"
+ },
+ {
+   "name": "Feldsperling",
+   "latin": "Passer montanus"
+ },
+ {
+   "name": "Fichtenzeisig",
+   "latin": "Spinus pinus"
+ },
+ {
+   "name": "Wacholdermeise",
+   "latin": "Baeolophus ridgwayi"
+ },
+ {
+   "name": "Carolinazaunkönig",
+   "latin": "Thryothorus ludovicianus"
+ }
+]
 }

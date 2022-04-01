@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, Modal, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {RNCamera, TrackedTextFeature} from "react-native-camera";
-import birdData from './assets/data/birds.json';
 import axios from "axios";
 import {stringSimilarity} from "string-similarity-js";
 import SoundPlayer from 'react-native-sound-player';
@@ -48,6 +47,18 @@ const App = () => {
     const [isPlaying, setIsPlaying] = useState<boolean>(true);
     const [ratedBirds, setRatedBirds] = useState<RatedBird[]>([]);
     const [bounds, setBounds] = useState<any>(null);
+    const [birdData, setBirdData] = useState<any>(null);
+
+    useEffect(() => {
+        const url = 'https://raw.githubusercontent.com/f1sh1918/fluegelschlag-songs/main/fsongs/assets/data/birds.json'
+        axios.get(url)
+            .then(function (response) {
+                setBirdData(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, []);
 
 
     useEffect(() => {
@@ -57,12 +68,20 @@ const App = () => {
                     const query = `https://xeno-canto.org/api/2/recordings?query=${bird.latin}+q:A`;
                     axios.get(query)
                         .then(function (response) {
-                            setBird({
-                                name: bird.name, latin: bird.latin, song: {
-                                    fileName: response?.data.recordings[0]["file-name"],
-                                    sono: response?.data.recordings[0].sono.small
-                                }
-                            })
+                            if(response.data.numRecordings > 0)
+                            {
+                                setBird({
+                                    name: bird.name, latin: bird.latin, song: {
+                                        fileName: response?.data.recordings[0]["file-name"],
+                                        sono: response?.data.recordings[0].sono.small
+                                    }
+                                })
+                                console.log("rate", rate)
+                            }
+                            else{
+                                setBird(null)
+                                setScanResult({name: `No songs found for: ${bird.name}`, latin: ''})
+                            }
                         })
                         .catch(function (error) {
                             console.log(error);
