@@ -93,6 +93,13 @@ const App = () => {
         [scanResult?.name]
     );
 
+    const onPressItem = (name: string) => {
+        stopSound()
+        setBounds(null)
+        setScanResult({name, latin: ''})
+        setBird(null)
+    }
+
 
     const loadSong = (song: Song) => {
         const soundFile = getSoundFile(song)
@@ -133,7 +140,8 @@ const App = () => {
             setScanned(true)
             setShowModal(true)
             setTimeout(() => setScanResult({name: ocrElements[0]?.text, latin: ocrElements[1]?.text}), 2000)
-            setBounds(ocrElements[0].bounds)
+            setTimeout(() => setBounds(ocrElements[0].bounds), 500)
+
         }
     }
 
@@ -156,7 +164,7 @@ const App = () => {
 
         })
         if (matching < matchingRate) {
-            setTimeout(() => clearScan(), 5000)
+            setTimeout(() => clearScan(), 1800)
         }
 
         setRate(Math.round(matching * 100))
@@ -194,6 +202,7 @@ const App = () => {
             {bird ?
                 <ResultScreen ratedBirds={ratedBirds.sort((a, b) => b.rate - a.rate)} isPlaying={isPlaying}
                               onPressVolume={onPressVolume} result={bird} showModal={showModal}
+                              onPressItem={onPressItem}
                               onModalClose={onModalClose}/> :
                 <RNCamera
                     onTextRecognized={recognizeText}

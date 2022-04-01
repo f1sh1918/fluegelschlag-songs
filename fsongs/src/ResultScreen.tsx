@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {FlatList, Modal, SafeAreaView, Text, View} from 'react-native'
+import {FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View} from 'react-native'
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 // @ts-ignore
@@ -11,7 +11,7 @@ import Icon from "./components/Icon";
 import {colors} from "./constants/colors";
 import getColor from "./utils/getColors";
 
-type ResultScreenProps = { showModal: boolean; onModalClose: () => void; result: Result, onPressVolume: () => void, isPlaying: boolean, ratedBirds: RatedBird[] }
+type ResultScreenProps = { showModal: boolean; onModalClose: () => void; result: Result, onPressVolume: () => void, isPlaying: boolean, ratedBirds: RatedBird[], onPressItem: (name: string) => void }
 
 
 const ResultScreen: React.FC<ResultScreenProps> = ({
@@ -20,11 +20,13 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                                                        result,
                                                        onPressVolume,
                                                        isPlaying,
-                                                       ratedBirds
+                                                       ratedBirds,
+                                                       onPressItem
                                                    }: ResultScreenProps): ReactElement => {
 
+
     const renderItem = ({item}: { item: RatedBird }) => (
-        <View style={{
+        <TouchableOpacity style={{
             flexDirection: 'row',
             marginTop: 8,
             backgroundColor: 'white',
@@ -33,14 +35,14 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
             borderRadius: 10,
             width: wp('90%'),
             justifyContent: 'space-between'
-        }}>
+        }} onPress={() => onPressItem(item.name)} disabled={result.name === item.name}>
             <Text style={{color: colors.black, fontSize: 20, fontWeight: 'bold'}}>{item.name}</Text>
             <Text style={{
                 color: getColor(Math.round(item.rate * 100)),
                 marginLeft: 20,
                 fontSize: 20
             }}>{Math.round(item.rate * 100)}%</Text>
-        </View>
+        </TouchableOpacity>
     );
 
 
@@ -71,7 +73,8 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                 alignItems: 'center',
                 paddingVertical: 10
             }}>
-                <Text style={{color: colors.black, margin: 20, fontSize: 24, fontWeight:'bold'}}>Weitere Ergebnisse</Text>
+                <Text style={{color: colors.black, margin: 20, fontSize: 24, fontWeight: 'bold'}}>Weitere
+                    Ergebnisse</Text>
                 <FlatList
                     data={ratedBirds}
                     renderItem={renderItem}
