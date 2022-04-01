@@ -3,7 +3,7 @@ import {ActivityIndicator, SafeAreaView, StyleSheet, Text, View} from 'react-nat
 import {RNCamera, TrackedTextFeature} from "react-native-camera";
 import axios from "axios";
 import {stringSimilarity} from "string-similarity-js";
-import SoundPlayer from 'react-native-sound-player';
+import Sound from 'react-native-sound';
 
 // @ts-ignore
 import RetryIcon from './assets/icons/repeat-icon.svg'
@@ -48,9 +48,10 @@ const App = () => {
     const [ratedBirds, setRatedBirds] = useState<RatedBird[]>([]);
     const [bounds, setBounds] = useState<any>(null);
     const [birdData, setBirdData] = useState<any>(null);
+    const [sound, setSound] = useState<Sound | null>(null);
 
     useEffect(() => {
-        const url = 'https://raw.githubusercontent.com/f1sh1918/fluegelschlag-songs/main/fsongs/assets/data/birds.json'
+        const url = 'https://ballonfabrik.org/wp-content/uploads/birds.json'
         axios.get(url)
             .then(function (response) {
                 setBirdData(response.data)
@@ -62,23 +63,22 @@ const App = () => {
 
 
     useEffect(() => {
-            if (!bird && scanResult?.name) {
+            if (!bird && scanResult?.name && birdData) {
                 const bird = checkBirdList(scanResult.name)
                 if (bird) {
                     const query = `https://xeno-canto.org/api/2/recordings?query=${bird.latin}+q:A`;
                     axios.get(query)
                         .then(function (response) {
-                            if(response.data.numRecordings > 0)
-                            {
+                            if (response.data.numRecordings > 0) {
+                                const song = {
+                                    fileName: response?.data.recordings[0]["file-name"],
+                                    sono: response?.data.recordings[0].sono.small
+                                }
                                 setBird({
-                                    name: bird.name, latin: bird.latin, song: {
-                                        fileName: response?.data.recordings[0]["file-name"],
-                                        sono: response?.data.recordings[0].sono.small
-                                    }
+                                    name: bird.name, latin: bird.latin, song
                                 })
-                                console.log("rate", rate)
-                            }
-                            else{
+                                loadSong(song)
+                            } else {
                                 setBird(null)
                                 setScanResult({name: `No songs found for: ${bird.name}`, latin: ''})
                             }
@@ -91,28 +91,28 @@ const App = () => {
         }
         ,
         [scanResult?.name]
-    )
-    ;
+    );
 
-    useEffect(() => {
-        if (bird?.song) {
-            playSong(bird.song)
-        }
-    }, [bird?.song]);
 
-    const playSong = (song: Song) => {
+    const loadSong = (song: Song) => {
         const soundFile = getSoundFile(song)
-        if (soundFile) {
-            try {
-                SoundPlayer.playUrl(soundFile)
-
-            } catch (e) {
-                console.log(`cannot play the sound file`, e)
+        Sound.setCategory('Playback');
+        const whoosh = new Sound(soundFile, '', (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
             }
-            setIsPlaying(true)
-        }
+            whoosh.play();
+
+        });
+        setSound(whoosh)
+        setIsPlaying(true)
     }
 
+    const playSong = () => {
+        sound?.play()
+        setIsPlaying(true)
+    }
 
     const recognizeText = ({textBlocks}: {
         textBlocks:
@@ -142,7 +142,7 @@ const App = () => {
         let matchingBird = null;
         let matching = 0;
         const birdsArray: RatedBird[] = []
-        birdData.birds.map(bird => {
+        birdData.birds.map((bird: any) => {
             const ratedBird = {...bird, rate: stringSimilarity(bird?.name?.trim(), name)}
             birdsArray.push(ratedBird)
 
@@ -180,11 +180,11 @@ const App = () => {
 
     const onPressVolume = () => {
         isPlaying && stopSound()
-        !isPlaying && bird?.song && playSong(bird.song)
+        !isPlaying && bird?.song && playSong()
     }
 
     const stopSound = () => {
-        SoundPlayer.stop()
+        sound?.stop()
         setIsPlaying(false)
     }
 

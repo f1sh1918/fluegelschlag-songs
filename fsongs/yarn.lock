@@ -5958,10 +5958,9 @@ react-is@^16.13.1, react-is@^16.7.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-camera@^4.2.1:
+react-native-camera@f1sh1918/react-native-camera#master:
   version "4.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-4.2.1.tgz#caf74081f055e89d7e9b0cd5108965d808c60e90"
-  integrity sha512-+Vkql24PFYQfsPRznJCvPwJQfyzCnjlcww/iZ4Ej80bgivKjL9eU0IMQIXp4yi6XCrKi4voWXxIDPMupQZKeIQ==
+  resolved "https://codeload.github.com/f1sh1918/react-native-camera/tar.gz/6ea7ba301dd7f6dd516a9738c1771b01497cc267"
   dependencies:
     prop-types "^15.6.2"
 
@@ -6005,10 +6004,10 @@ react-native-size-matters@^0.3.1:
   resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz#24d0cfc335a2c730f6d58bd7b43ea5a41be4b49f"
   integrity sha512-mKOfBLIBFBcs9br1rlZDvxD5+mAl8Gfr5CounwJtxI6Z82rGrMO+Kgl9EIg3RMVf3G855a85YVqHJL2f5EDRlw==
 
-react-native-sound-player@^0.11.3:
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/react-native-sound-player/-/react-native-sound-player-0.11.3.tgz#407aa76521a2203d29f40e081c4f89cb44ebdfd4"
-  integrity sha512-UROQGIPkb4vk5hk3cycup1YEgVmQtnT1VA+j3RMJmohBuFXIXauVob1sGsW9+rUOfRnMVXxv2FpDJU1Yet4IlA==
+react-native-sound@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/react-native-sound/-/react-native-sound-0.11.2.tgz#e542dc5b9e16ab4b3ac7e6eaddb1fc8d98da9038"
+  integrity sha512-LmGc8lgOK3qecYMVQpyHvww/C+wgT6sWeMpVbOe4NCRGC2yKd4fo4U0KBUo9PO7AqKESO3I/2GZg1/C0+bwiiA==
 
 react-native-svg-transformer@^1.0.0:
   version "1.0.0"

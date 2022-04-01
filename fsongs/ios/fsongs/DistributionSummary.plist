@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fsongs.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>1</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>9B0432EB403684E62C50356BABC51B8E8D262295</string>
+				<key>dateExpires</key>
+				<string>16.03.23</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>7272KE28TJ.org.reactjs.native.example.fsongs</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>7272KE28TJ</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>7272KE28TJ.org.reactjs.native.example.fsongs</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>fsongs.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>38f7a88c-7cc2-4fa0-95e3-4f119162c0c1</string>
+				<key>dateExpires</key>
+				<string>16.03.23</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>7272KE28TJ</string>
+				<key>name</key>
+				<string>Tür an Tür - Digitalfabrik gGmbH</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>1.0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

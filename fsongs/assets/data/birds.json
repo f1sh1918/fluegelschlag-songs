@@ -275,6 +275,126 @@
  {
    "name": "Carolinazaunkönig",
    "latin": "Thryothorus ludovicianus"
+ },
+ {
+   "name": "Baumschwalm",
+   "latin": "Aegotheles cristatus"
+ },
+ {
+   "name": "Weißbauch-Seeadler",
+   "latin": "Haliaeetus leucogaster"
+ },
+ {
+   "name": "Rauchschwalbe",
+   "latin": "Hirundo rustica"
+ },
+ {
+   "name": "Fleckengrundammer",
+   "latin": "Pipilo maculatus"
+ },
+ {
+   "name": "Kalifornischer Kondor",
+   "latin": "Gymnogyps californianus"
+ },
+ {
+   "name": "Gelbhaubenkakadu",
+   "latin": "Cacatua galerita"
+ },
+ {
+   "name": "Ostgoldspecht",
+   "latin": "Colaptes auratus"
+ },
+ {
+   "name": "Rotrücken-Staffelschwanz",
+   "latin": "Malurus melanocephalus"
+ },
+ {
+   "name": "Kernbeißer",
+   "latin": "Coccothraustes coccothraustes"
+ },
+ {
+   "name": "Rabenkrähe",
+   "latin": "Corvus corone"
+ },
+ {
+   "name": "Rohrschwirl",
+   "latin": "Locustella luscinioides"
+ },
+ {
+   "name": "Keilschwanzadler",
+   "latin": "Aquila audax"
+ },
+ {
+   "name": "Einsiedlerdrossel",
+   "latin": "Catharus guttatus"
+ },
+ {
+   "name": "Seidensänger",
+   "latin": "Cettia cetti"
+ },
+ {
+   "name": "Rallenreiher",
+   "latin": "Ardeola ralloides"
+ },
+ {
+   "name": "Theklalerche",
+   "latin": "Galerida theklae"
+ },
+ {
+   "name": "Ohrenscharbe",
+   "latin": "Phalacrocorax auritus"
+ },
+ {
+   "name": "Rotkehl-Hüttensänger",
+   "latin": "Sialia sialis"
+ },
+ {
+   "name": "Schieferrücken-Königstyrann",
+   "latin": "Tyrannus tyrannus"
+ },
+ {
+   "name": "Weissbauch-Phoebetyrann",
+   "latin": "Sayornis phoebe"
+ },
+ {
+   "name": "Nordstreifenkiwi",
+   "latin": "Apteryx mantelli"
+ },
+ {
+   "name": "Rotaugenvireo",
+   "latin": "Vireo olivaceus"
+ },
+ {
+   "name": "Rotstirnschnäpper",
+   "latin": "Petroica goodenovii"
+ },
+ {
+   "name": "Rotkopf-Säbelschnäbler",
+   "latin": "Recurvirostra novaehollandiae"
+ },
+ {
+   "name": "Rotflügelsittich",
+   "latin": "Aprosmictus erythropterus"
+ },
+ {
+   "name": "Gelbnacken-Laubenvogel",
+   "latin": "Sericulus chrysocephalus"
+ },
+ {
+   "name": "Rotrückenreiher",
+   "latin": "Nycticorax caledonicus"
+ },
+ {
+   "name": "Australrohrsänger",
+   "latin": "Acrocephalus australis"
+ },
+ {
+   "name": "Rosenohrente",
+   "latin": "Malacorhynchus membranaceus"
+ },
+ {
+   "name": "Cassingimpel",
+   "latin": "Haemorhous cassinii"
  }
 ]
 }
