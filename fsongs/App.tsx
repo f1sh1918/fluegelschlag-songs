@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, SafeAreaView, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
+import {ActivityIndicator, SafeAreaView, StyleSheet, Text, useWindowDimensions, View, Image} from 'react-native';
 import {RNCamera, TrackedTextFeature} from "react-native-camera";
 import axios from "axios";
 import {stringSimilarity} from "string-similarity-js";
 import Sound from 'react-native-sound';
 
 // @ts-ignore
-import RetryIcon from './assets/icons/repeat-icon.svg'
-// @ts-ignore
 import CloseIcon from "./assets/icons/close-circle-icon.svg";
 import ResultScreen from "./src/ResultScreen";
 import ScanInfo from "./src/components/ScanInfo";
+import {colors} from "./src/constants/colors";
+import {labels} from "./src/constants/labels";
 
 
 export type Result = {
@@ -46,10 +46,12 @@ const App = () => {
     const [rate, setRate] = useState<number>(0);
     const [isPlaying, setIsPlaying] = useState<boolean>(true);
     const [ratedBirds, setRatedBirds] = useState<RatedBird[]>([]);
-    const [bounds, setBounds] = useState<any>(null);
     const [birdData, setBirdData] = useState<any>(null);
     const [sound, setSound] = useState<Sound | null>(null);
     const {height, width} = useWindowDimensions();
+    // Calc the camera view
+    const maskRowHeight = Math.round((height - 200) / 8);
+    const maskColWidth = (width - 300) / 2;
 
     useEffect(() => {
         const url = 'https://ballonfabrik.org/wp-content/uploads/birds.json'
@@ -96,7 +98,6 @@ const App = () => {
 
     const onPressItem = (name: string) => {
         stopSound()
-        setBounds(null)
         setScanResult({name, latin: ''})
         setBird(null)
     }
@@ -141,8 +142,6 @@ const App = () => {
             setScanned(true)
             setShowModal(true)
             setTimeout(() => setScanResult({name: ocrElements[0]?.text, latin: ocrElements[1]?.text}), 2000)
-            setTimeout(() => setBounds(ocrElements[0].bounds), 500)
-
         }
     }
 
@@ -176,7 +175,6 @@ const App = () => {
     const clearScan = () => {
         setScanResult(null)
         setScanned(false)
-        setBounds(null)
     }
 
     const onModalClose = () => {
@@ -197,20 +195,30 @@ const App = () => {
         setIsPlaying(false)
     }
 
-    const getBounds = (coordinate: number, containerWidth: number): number => {
-        if (coordinate + containerWidth > width) {
-            return containerWidth - width
-        }
-        if (coordinate - containerWidth < 0) {
-            return containerWidth
-        }
-        return coordinate
-    }
+    const styles = StyleSheet.create({
+        maskOutter: {
+            flex: 1,
+            alignItems: 'center'
+        },
+        maskInner: {
+            width: width - 40,
+            backgroundColor: 'transparent',
+            borderColor: 'white',
+            borderWidth: 1,
+            borderRadius: 10
+        },
+        maskFrame: {
+            backgroundColor: 'rgba(255,255,255,1)',
+        },
+        maskRow: {
+            width: '100%',
+        },
+        maskCenter: {flexDirection: 'row'},
+    });
 
 
     return (
         <SafeAreaView style={{flex: 1}}>
-            {scanResult && !bird && <ScanInfo rate={rate} result={scanResult} retry={clearScan}/>}
             {bird ?
                 <ResultScreen ratedBirds={ratedBirds.sort((a, b) => b.rate - a.rate)} isPlaying={isPlaying}
                               onPressVolume={onPressVolume} result={bird} showModal={showModal}
@@ -218,31 +226,74 @@ const App = () => {
                               onModalClose={onModalClose}/> :
                 <RNCamera
                     onTextRecognized={recognizeText}
-
                     style={{flex: 1}}
                     captureAudio={false}>
-                    {bounds && <View
-                        style={{
-                            borderWidth: 2,
-                            borderColor: '#fcba03',
-                            position: 'absolute',
-                            left: getBounds(bounds?.origin.x - 20, bounds?.size.width * 3),
-                            top: bounds?.origin.y - 10,
-                            height: bounds?.size.height * 4,
-                            width: bounds?.size.width * 3
-                        }}
-                    />}
-                    {!scanResult && !bird &&
-                    <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 20}}>
-                        <ActivityIndicator size="large" color="#fcba03"/>
-                        <Text style={{color: '#fcba03', alignSelf: 'center', fontSize: 24, marginLeft: 20}}>Scanning
-                            ...</Text>
-                    </View>}
+
+                    < View style={styles.maskOutter}>
+                        <View style={[{flex: 10}, styles.maskRow, styles.maskFrame]}>
+                            {scanResult && !bird && <ScanInfo rate={rate} result={scanResult} retry={clearScan}/>}
+                            {!scanResult && !bird &&
+                            <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 20}}>
+                                <ActivityIndicator size="large" color={colors.brown}/>
+                                <Text style={{
+                                    color: colors.brown,
+                                    alignSelf: 'center',
+                                    fontSize: 24,
+                                    marginLeft: 20
+                                }}>{labels.scan}</Text>
+                            </View>}
+                        </View>
+                        <View style={[{flex: 20}, styles.maskCenter]}>
+                            <View style={[{width: maskColWidth}, styles.maskFrame]}/>
+                            <View style={styles.maskInner}/>
+                            <View style={[{width: maskColWidth}, styles.maskFrame]}/>
+                        </View>
+                        <View style={[{flex: maskRowHeight}, styles.maskRow, styles.maskFrame]}>
+                            <Text style={{
+                                fontSize: 32,
+                                textAlign: 'center',
+                                color: colors.darkgray,
+                                padding: 20,
+                                fontWeight: 'bold'
+                            }}>{labels.example}</Text>
+                            <View style={{
+                                backgroundColor: 'white',
+                                height: '60%',
+                                justifyContent: 'center',
+                                flexDirection: 'row',
+                                flex: 1
+                            }}>
+                                <Image source={require('./assets/icons/icons_left.png')}
+                                       style={{alignSelf: 'center', height: '40%'}} resizeMode={"contain"}/>
+                                <Image source={require('./assets/icons/bird_test.png')}
+                                       style={{alignSelf: 'center', width: '70%', height: '90%'}}
+                                       resizeMode={"contain"}/>
+                            </View>
+                            <View style={{backgroundColor: colors.brown, height: '25%', justifyContent: 'center'}}>
+                                <Text style={{
+                                    fontSize: 28,
+                                    textAlign: 'center',
+                                    color: colors.black,
+                                    padding: 20
+                                }}>{labels.activation}</Text>
+                            </View>
+                            <View style={{justifyContent: 'center', flexDirection: 'row', paddingHorizontal: 20}}>
+                                <Image source={require('./assets/icons/map.png')}
+                                       style={{alignSelf: 'center', width: 50, height: 50}} resizeMode={"contain"}/>
+                                <Text style={{
+                                    fontSize: 16,
+                                    textAlign: 'center',
+                                    color: colors.darkgray,
+                                    padding: 20,
+                                    fontStyle: 'italic'
+                                }}>{labels.description}</Text>
+                            </View>
+                        </View>
+                    </View>
+
                 </RNCamera>}
         </SafeAreaView>
     );
 };
-// TODO add styles here
-const styles = StyleSheet.create({});
 
 export default App;
