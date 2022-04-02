@@ -483,6 +483,218 @@
     {
       "name": "Stephanieparadieselster",
       "latin": "Astrapia stephaniae"
+    },
+    {
+      "name": "Schiefschnabel",
+      "latin": "Anarhynchus frontalis"
+    },
+    {
+      "name": "Gürtelfischer",
+      "latin": "Megaceryle alcyon"
+    },
+    {
+      "name": "Goldohr-Honigfresser",
+      "latin": "Meliphaga lewinii"
+    },
+    {
+      "name": "Lincolnammer",
+      "latin": "Melospiza lincolnii"
+    },
+    {
+      "name": "Berghüttensänger",
+      "latin": "Sialia currucoides"
+    },
+    {
+      "name": "Kolkrabe",
+      "latin": "Corvus corax"
+    },
+    {
+      "name": "Falkennachtschwalbe",
+      "latin": "Chordeiles minor"
+    },
+    {
+      "name": "Gänsesäger",
+      "latin": "Mergus merganser"
+    },
+    {
+      "name": "Maori-Glockenhonigfresser",
+      "latin": "Anthornis melanura"
+    },
+    {
+      "name": "Ligurien-Bartgrasmücke",
+      "latin": "Curruca subalpina"
+    },
+    {
+      "name": "Maskenkiebitz",
+      "latin": "Vanellus miles"
+    },
+    {
+      "name": "Wanderfalke",
+      "latin": "Falco peregrinus"
+    },
+    {
+      "name": "Graurücken-Metzgervogel",
+      "latin": "Cracticus torquatus"
+    },
+    {
+      "name": "Korsenkleiber",
+      "latin": "Sitta whiteheadi"
+    },
+    {
+      "name": "Louisianawürger",
+      "latin": "Lanius ludovicianus"
+    },
+    {
+      "name": "Rubinkehlkolibri",
+      "latin": "Archilochus colubris"
+    },
+    {
+      "name": "Carolinameise",
+      "latin": "Poecile carolinensis"
+    },
+    {
+      "name": "Rostkauz",
+      "latin": "Ninox rufa"
+    },
+    {
+      "name": "Haussperling",
+      "latin": "Passer domesticus"
+    },
+    {
+      "name": "Indigofink",
+      "latin": "Passerina cyanea"
+    },
+    {
+      "name": "Südsee-Sumpfhuhn",
+      "latin": "Zapornia tabuensis"
+    },
+    {
+      "name": "Langbeinschnäpper",
+      "latin": "Petroica australis"
+    },
+    {
+      "name": "Schmuckreiher",
+      "latin": "Egretta thula"
+    },
+    {
+      "name": "Türkisstaffelschwanz",
+      "latin": "Malurus splendens"
+    },
+    {
+      "name": "Eichelhäher",
+      "latin": "Garrulus glandarius"
+    },
+    {
+      "name": "Cassinammer",
+      "latin": "Peucaea cassinii"
+    },
+    {
+      "name": "Höckerschwan",
+      "latin": "Cygnus olor"
+    },
+    {
+      "name": "Purpurgrackel",
+      "latin": "Quiscalus quiscula"
+    },
+    {
+      "name": "Brautente",
+      "latin": "Aix sponsa"
+    },
+    {
+      "name": "Türkentaube",
+      "latin": "Streptopelia decaocto"
+    },
+    {
+      "name": "Kaninchenkauz",
+      "latin": "Athene cunicularia"
+    },
+    {
+      "name": "Clarktaucher",
+      "latin": "Aechmophorus clarkii"
+    },
+    {
+      "name": "Clarktaucher",
+      "latin": "Aechmophorus clarkii"
+    },
+    {
+      "name": "Schneeammer",
+      "latin": "Plectrophenax nivalis"
+    },
+    {
+      "name": "Buschzaunkönig",
+      "latin": "Thryomanes bewickii"
+    },
+    {
+      "name": "Waldstorch",
+      "latin": "Mycteria americana"
+    },
+    {
+      "name": "Bindentaucher",
+      "latin": "Podilymbus podiceps"
+    },
+    {
+      "name": "Blaumückenfänger",
+      "latin": "Polioptila caerulea"
+    },
+    {
+      "name": "Rundschwanzsperber",
+      "latin": "Accipiter cooperii"
+    },
+    {
+      "name": "Grünspecht",
+      "latin": "Picus viridis"
+    },
+    {
+      "name": "Kornweihe",
+      "latin": "Circus cyaneus"
+    },
+    {
+      "name": "Rothuhn",
+      "latin": "Alectoris rufa"
+    },
+    {
+      "name": "Schwarzkopf-Wippflöter",
+      "latin": "Psophodes olivaceus"
+    },
+    {
+      "name": "Rosenbrust-Kernknacker",
+      "latin": "Pheucticus ludovicianus"
+    },
+    {
+      "name": "Blaukehlchen",
+      "latin": "Luscinia svecica"
+    },
+    {
+      "name": "Zwergtrappe",
+      "latin": "Tetrax tetrax"
+    },
+    {
+      "name": "Spatelente",
+      "latin": "Bucephala islandica"
+    },
+    {
+      "name": "Tannenmeise",
+      "latin": "Periparus ater"
+    },
+    {
+      "name": "Cassingimpel",
+      "latin": "Haemorhous cassinii"
+    },
+    {
+      "name": "Bienenfresser",
+      "latin": "Merops apiaster"
+    },
+    {
+      "name": "Prachttaucher",
+      "latin": "Gavia arctica"
+    },
+    {
+      "name": "Stieglitz",
+      "latin": "Carduelis carduelis"
+    },
+    {
+      "name": "Neuhollandkrähe",
+      "latin": "Corvus coronoides"
     }
   ]
 }
