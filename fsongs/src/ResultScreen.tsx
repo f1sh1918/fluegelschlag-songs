@@ -1,16 +1,16 @@
 import React, {ReactElement} from 'react';
 import {FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View} from 'react-native'
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
-
-// @ts-ignore
-import CloseIcon from "../assets/icons/close-circle-icon.svg";
-// @ts-ignore
-import Volume from '../assets/icons/volume-up-circle-icon.svg'
 import {RatedBird, Result} from "../App";
 import Icon from "./components/Icon";
 import {colors} from "./constants/colors";
 import getColor from "./utils/getColors";
 import {labels} from "./constants/labels";
+
+// @ts-ignore
+import CloseIcon from "../assets/icons/close-circle-icon.svg";
+// @ts-ignore
+import Volume from '../assets/icons/volume-up-circle-icon.svg';
 
 type ResultScreenProps = { showModal: boolean; onModalClose: () => void; result: Result, onPressVolume: () => void, isPlaying: boolean, ratedBirds: RatedBird[], onPressItem: (name: string) => void }
 
@@ -39,10 +39,10 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
         }} onPress={() => onPressItem(item.name)} disabled={result.name === item.name}>
             <Text style={{color: colors.black, fontSize: wp('4%'), fontWeight: 'bold'}}>{item.name}</Text>
             <Text style={{
-                color: getColor(Math.round(item.rate * 100)),
+                color: index === 0 ? 'green' : getColor(Math.round(item.rate * 100)),
                 marginLeft: 20,
                 fontSize: wp('4%')
-            }}>{index === 0 ? 100 : Math.round(item.rate * 100)}%</Text>
+            }}>{Math.round(item.rate * 100)}%</Text>
         </TouchableOpacity>
     );
 

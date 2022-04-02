@@ -14,9 +14,9 @@ export const skeletons: SkeletonBird[] = [
     {
         image: require('../../assets/icons/kiwi.png'),
         name: 'Kiwi',
-        color: 'white',
+        color: 'rgba(255,255,255,0.7)',
         capability: 'BEIM AUSSPIELEN: Wirf eine deiner Bonuskarten ab. Ziehe dann 4 neue Bonuskarten und behalte 2 davon.',
-        description: 'Das Ei dieses Kiwis macht vor der Eiablage bis zu 20 Prozent des Körpergewichts der Mutter aus'
+        description: 'Die weiblichen Tiere sind größer als die männlichen. Kiwis leben in Paaren und paaren sich ein Leben lang.'
     },
     {
         image: require('../../assets/icons/blaumeise_klein.png'),
