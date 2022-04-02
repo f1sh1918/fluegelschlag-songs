@@ -18,21 +18,26 @@ def get_args():
 
 def scrapePageForName(name):
     """Scrapes Wikipedia for results"""
-    url = "https://de.wikipedia.org/wiki/"+name.strip()
+    if ('' == name.strip()):
+        return []
+    name = name.strip()
+    url = "https://de.wikipedia.org/wiki/"+name
     page = requests.get(url)
     if (404 == page.status_code):
-        print('Error 404 ' +  name.strip())
+        print('Error 404 ' +  name)
+        return [name, '', '404 - page not found']
     soup = BeautifulSoup(page.content, "html.parser")
     title = soup.find("h1", "firstHeading").string
     latinNames = soup.find_all("td", class_="taxo-name")
     latin = latinNames[-1].i.string if len(latinNames) > 0 else ''
     if (404 != page.status_code and '' == latin):
-        print('Latin     ' +  name.strip())
-    return [name.strip(), latin]
+        print('Error 204 ' +  name)
+        return [name, '', '204 - latin not found']
+    return [name, latin]
 
 def go(fileIn, fileOut):
     """File in and out stream"""
-    csv_writer = csv.writer(fileOut, quoting=csv.QUOTE_ALL, delimiter=',')
+    csv_writer = csv.writer(fileOut, quoting=csv.QUOTE_NONE, delimiter=',')
     csv_writer.writerow(["name", "latin"])
 
     for lineNum, line in enumerate(fileIn, start=1):
@@ -48,7 +53,7 @@ def main():
     else:
         # append results from command line
         with open(args.output[0], 'a', newline='') as fileOut:
-            csv_writer = csv.writer(fileOut, quoting=csv.QUOTE_ALL, delimiter=',')
+            csv_writer = csv.writer(fileOut, quoting=csv.QUOTE_NONE, delimiter=',')
             for name in args.names:
                 row = scrapePageForName(name)
                 csv_writer.writerow(row)
