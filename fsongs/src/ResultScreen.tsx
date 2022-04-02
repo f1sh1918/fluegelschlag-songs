@@ -42,7 +42,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                 color: index === 0 ? 'green' : getColor(Math.round(item.rate * 100)),
                 marginLeft: 20,
                 fontSize: wp('4%')
-            }}>{Math.round(item.rate * 100)}%</Text>
+            }}>{index === 0 ? 100 : Math.round(item.rate * 100)}%</Text>
         </TouchableOpacity>
     );
 
