@@ -10,6 +10,7 @@ import {RatedBird, Result} from "../App";
 import Icon from "./components/Icon";
 import {colors} from "./constants/colors";
 import getColor from "./utils/getColors";
+import {labels} from "./constants/labels";
 
 type ResultScreenProps = { showModal: boolean; onModalClose: () => void; result: Result, onPressVolume: () => void, isPlaying: boolean, ratedBirds: RatedBird[], onPressItem: (name: string) => void }
 
@@ -30,17 +31,17 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
             flexDirection: 'row',
             marginTop: 8,
             backgroundColor: 'white',
-            paddingVertical: 20,
+            paddingVertical: wp('4%'),
             paddingHorizontal: 30,
             borderRadius: 10,
             width: wp('90%'),
             justifyContent: 'space-between'
         }} onPress={() => onPressItem(item.name)} disabled={result.name === item.name}>
-            <Text style={{color: colors.black, fontSize: 20, fontWeight: 'bold'}}>{item.name}</Text>
+            <Text style={{color: colors.black, fontSize: wp('4%'), fontWeight: 'bold'}}>{item.name}</Text>
             <Text style={{
                 color: getColor(Math.round(item.rate * 100)),
                 marginLeft: 20,
-                fontSize: 20
+                fontSize: wp('4%')
             }}>{Math.round(item.rate * 100)}%</Text>
         </TouchableOpacity>
     );
@@ -49,18 +50,18 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
     return (
         <Modal visible={showModal}>
             <SafeAreaView
-                style={{backgroundColor: colors.gray, flexDirection: 'row', paddingVertical: 15}}>
-                <Icon onPress={onModalClose}>
+                style={{backgroundColor: colors.gray, flexDirection: 'row'}}>
+                <Icon onPress={onModalClose} style={{padding: 15}}>
                     <CloseIcon/>
                 </Icon>
 
             </SafeAreaView>
             <View style={{marginTop: 20}}>
                 <View>
-                    <Text style={{fontSize: 32, textAlign: 'center', color: colors.black}}>{result.name} </Text>
-                    <Text style={{fontSize: 16, textAlign: 'center', color: colors.black}}>{result.latin}</Text>
+                    <Text style={{fontSize: wp('6%'), textAlign: 'center', color: colors.black}}>{result.name} </Text>
+                    <Text style={{fontSize: wp('4%'), textAlign: 'center', color: colors.black}}>{result.latin}</Text>
                 </View>
-                <View style={{alignSelf: 'center', marginVertical: 50}}><Icon
+                <View style={{alignSelf: 'center', marginVertical: wp('10%')}}><Icon
                     onPress={() => onPressVolume()}><Volume fill={isPlaying ? colors.red : colors.black} width={60}
                                                             height={60}/></Icon>
                 </View>
@@ -73,10 +74,14 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                 alignItems: 'center',
                 paddingVertical: 10
             }}>
-                <Text style={{color: colors.black, margin: 20, fontSize: 24, fontWeight: 'bold'}}>Weitere
-                    Ergebnisse</Text>
+                <Text style={{
+                    color: colors.black,
+                    margin: wp('4%'),
+                    fontSize: wp('5%'),
+                    fontWeight: 'bold'
+                }}>{labels.furtherResults}</Text>
                 <FlatList
-                    data={ratedBirds.filter(bird=>bird.rate>0)}
+                    data={ratedBirds.filter(bird => bird.rate > 0)}
                     renderItem={renderItem}
                     keyExtractor={item => item.latin}
                 />

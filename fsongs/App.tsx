@@ -1,17 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, SafeAreaView, StyleSheet, Text, useWindowDimensions, View, Image} from 'react-native';
 import {RNCamera, TrackedTextFeature} from "react-native-camera";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 import axios from "axios";
 import {stringSimilarity} from "string-similarity-js";
 import Sound from 'react-native-sound';
-
-// @ts-ignore
-import CloseIcon from "./assets/icons/close-circle-icon.svg";
 import ResultScreen from "./src/ResultScreen";
 import ScanInfo from "./src/components/ScanInfo";
 import {colors} from "./src/constants/colors";
 import {labels} from "./src/constants/labels";
 
+// @ts-ignore
+import CloseIcon from "./assets/icons/close-circle-icon.svg";
 
 export type Result = {
     name: string;
@@ -50,7 +51,7 @@ const App = () => {
     const [sound, setSound] = useState<Sound | null>(null);
     const {height, width} = useWindowDimensions();
     // Calc the camera view
-    const maskRowHeight = Math.round((height - 200) / 8);
+    const maskRowHeight = hp('10%');
     const maskColWidth = (width - 300) / 2;
 
     useEffect(() => {
@@ -198,7 +199,8 @@ const App = () => {
     const styles = StyleSheet.create({
         maskOutter: {
             flex: 1,
-            alignItems: 'center'
+            alignItems: 'center',
+            opacity: 0.95
         },
         maskInner: {
             width: width - 40,
@@ -208,7 +210,8 @@ const App = () => {
             borderRadius: 10
         },
         maskFrame: {
-            backgroundColor: 'rgba(255,255,255,1)',
+            backgroundColor: 'white',
+            opacity: 0.9
         },
         maskRow: {
             width: '100%',
@@ -238,7 +241,7 @@ const App = () => {
                                 <Text style={{
                                     color: colors.brown,
                                     alignSelf: 'center',
-                                    fontSize: 24,
+                                    fontSize: wp('5%'),
                                     marginLeft: 20
                                 }}>{labels.scan}</Text>
                             </View>}
@@ -248,40 +251,45 @@ const App = () => {
                             <View style={styles.maskInner}/>
                             <View style={[{width: maskColWidth}, styles.maskFrame]}/>
                         </View>
-                        <View style={[{flex: maskRowHeight}, styles.maskRow, styles.maskFrame]}>
+                        <View style={[{flex: maskRowHeight, opacity: 0.9}, styles.maskRow, styles.maskFrame]}>
                             <Text style={{
-                                fontSize: 32,
+                                fontSize: wp('6%'),
                                 textAlign: 'center',
                                 color: colors.darkgray,
                                 padding: 20,
                                 fontWeight: 'bold'
                             }}>{labels.example}</Text>
                             <View style={{
-                                backgroundColor: 'white',
                                 height: '60%',
                                 justifyContent: 'center',
                                 flexDirection: 'row',
                                 flex: 1
                             }}>
-                                <Image source={require('./assets/icons/icons_left.png')}
-                                       style={{alignSelf: 'center', height: '40%'}} resizeMode={"contain"}/>
+                                <Image source={require('./assets/icons/icon_left.png')}
+                                       style={{alignSelf: 'center', height: hp('20%')}} resizeMode={"contain"}/>
                                 <Image source={require('./assets/icons/bird_test.png')}
                                        style={{alignSelf: 'center', width: '70%', height: '90%'}}
                                        resizeMode={"contain"}/>
                             </View>
                             <View style={{backgroundColor: colors.brown, height: '25%', justifyContent: 'center'}}>
                                 <Text style={{
-                                    fontSize: 28,
+                                    fontSize: wp('6%'),
                                     textAlign: 'center',
                                     color: colors.black,
-                                    padding: 20
+                                    paddingHorizontal: 30
                                 }}>{labels.activation}</Text>
                             </View>
-                            <View style={{justifyContent: 'center', flexDirection: 'row', paddingHorizontal: 20}}>
+                            <View style={{justifyContent: 'center', flexDirection: 'row', paddingHorizontal: 30}}>
                                 <Image source={require('./assets/icons/map.png')}
-                                       style={{alignSelf: 'center', width: 50, height: 50}} resizeMode={"contain"}/>
+                                       style={{
+                                           alignSelf: 'center',
+                                           justifyContent: 'center',
+                                           width: 50,
+                                           height: 50,
+                                           marginLeft: 20
+                                       }} resizeMode={"contain"}/>
                                 <Text style={{
-                                    fontSize: 16,
+                                    fontSize: wp('4%'),
                                     textAlign: 'center',
                                     color: colors.darkgray,
                                     padding: 20,
