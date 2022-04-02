@@ -26,7 +26,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                                                    }: ResultScreenProps): ReactElement => {
 
 
-    const renderItem = ({item}: { item: RatedBird }) => (
+    const renderItem = ({item, index}: { item: RatedBird, index: number }) => (
         <TouchableOpacity style={{
             flexDirection: 'row',
             marginTop: 8,
@@ -42,7 +42,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
                 color: getColor(Math.round(item.rate * 100)),
                 marginLeft: 20,
                 fontSize: wp('4%')
-            }}>{Math.round(item.rate * 100)}%</Text>
+            }}>{index === 0 ? 100 : Math.round(item.rate * 100)}%</Text>
         </TouchableOpacity>
     );
 
