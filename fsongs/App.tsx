@@ -13,6 +13,8 @@ import {labels} from "./src/constants/labels";
 
 // @ts-ignore
 import CloseIcon from "./assets/icons/close-circle-icon.svg";
+import SkeletonLayer from "./src/components/SkeletonLayer";
+import {skeletons} from "./src/constants/skeleton";
 
 export type Result = {
     name: string;
@@ -49,7 +51,8 @@ const App = () => {
     const [ratedBirds, setRatedBirds] = useState<RatedBird[]>([]);
     const [birdData, setBirdData] = useState<any>(null);
     const [sound, setSound] = useState<Sound | null>(null);
-    const {height, width} = useWindowDimensions();
+    const [skeletonIndex, setSkeletonIndex] = useState<number>(Math.floor(Math.random() * (skeletons.length)));
+    const {width} = useWindowDimensions();
     // Calc the camera view
     const maskRowHeight = hp('10%');
     const maskColWidth = (width - 300) / 2;
@@ -183,6 +186,7 @@ const App = () => {
         setBird(null)
         clearScan()
         stopSound()
+        setSkeletonIndex(Math.floor(Math.random() * (skeletons.length)))
     }
 
 
@@ -251,52 +255,9 @@ const App = () => {
                             <View style={styles.maskInner}/>
                             <View style={[{width: maskColWidth}, styles.maskFrame]}/>
                         </View>
-                        <View style={[{flex: maskRowHeight, opacity: 0.9}, styles.maskRow, styles.maskFrame]}>
-                            <Text style={{
-                                fontSize: wp('6%'),
-                                textAlign: 'center',
-                                color: colors.darkgray,
-                                padding: 20,
-                                fontWeight: 'bold'
-                            }}>{labels.example}</Text>
-                            <View style={{
-                                height: '60%',
-                                justifyContent: 'center',
-                                flexDirection: 'row',
-                                flex: 1
-                            }}>
-                                <Image source={require('./assets/icons/icon_left.png')}
-                                       style={{alignSelf: 'center', height: hp('20%')}} resizeMode={"contain"}/>
-                                <Image source={require('./assets/icons/bird_test.png')}
-                                       style={{alignSelf: 'center', width: '70%', height: '90%'}}
-                                       resizeMode={"contain"}/>
-                            </View>
-                            <View style={{backgroundColor: colors.brown, height: '25%', justifyContent: 'center'}}>
-                                <Text style={{
-                                    fontSize: wp('6%'),
-                                    textAlign: 'center',
-                                    color: colors.black,
-                                    paddingHorizontal: 30
-                                }}>{labels.activation}</Text>
-                            </View>
-                            <View style={{justifyContent: 'center', flexDirection: 'row', paddingHorizontal: 30}}>
-                                <Image source={require('./assets/icons/map.png')}
-                                       style={{
-                                           alignSelf: 'center',
-                                           justifyContent: 'center',
-                                           width: 50,
-                                           height: 50,
-                                           marginLeft: 20
-                                       }} resizeMode={"contain"}/>
-                                <Text style={{
-                                    fontSize: wp('4%'),
-                                    textAlign: 'center',
-                                    color: colors.darkgray,
-                                    padding: 20,
-                                    fontStyle: 'italic'
-                                }}>{labels.description}</Text>
-                            </View>
-                        </View>
+                        <SkeletonLayer additionalStyles={styles} maskRowHeight={maskRowHeight}
+                                       bird={skeletons[skeletonIndex]}/>
+
                     </View>
 
                 </RNCamera>}
