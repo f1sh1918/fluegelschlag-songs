@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, SafeAreaView, StyleSheet, Text, useWindowDimensions, View, Image} from 'react-native';
-import {RNCamera, TrackedTextFeature} from "react-native-camera";
+import {ActivityIndicator, SafeAreaView, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
+import {RNCamera, TrackedTextFeature, TrackedTextFeatureRecursive} from "react-native-camera";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import axios from "axios";
@@ -127,6 +127,15 @@ const App = () => {
         setIsPlaying(true)
     }
 
+    const checkBounds = (textLine: TrackedTextFeatureRecursive): boolean => {
+        const min = 50
+        const max = 250
+        if (textLine.bounds.origin.x > min && textLine.bounds.origin.x < max && textLine.bounds.origin.y > min && textLine.bounds.origin.y < max) {
+            return true
+        }
+        return false
+    }
+
     const recognizeText = ({textBlocks}: {
         textBlocks:
             TrackedTextFeature[]
@@ -134,7 +143,7 @@ const App = () => {
         const ocrElements: Array<any> = [];
         textBlocks.forEach(textBlock => {
             textBlock.components.forEach((textLine, index) => {
-                if (index < 2 && textLine.value.length > 5) {
+                if (index < 2 && textLine.value.length > 2 && checkBounds(textLine)) {
                     ocrElements.push({
                         bounds: textLine.bounds, text: textLine.value
                     });
@@ -142,7 +151,7 @@ const App = () => {
                 }
             });
         });
-        if (ocrElements.length > 2 && !scanned) {
+        if (ocrElements.length > 0 && !scanned) {
             setScanned(true)
             setShowModal(true)
             setTimeout(() => setScanResult({name: ocrElements[0]?.text, latin: ocrElements[1]?.text}), 2000)
