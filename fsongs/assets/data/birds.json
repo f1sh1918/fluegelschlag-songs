@@ -1391,6 +1391,366 @@
     {
       "name": "Kea",
       "latin": "Nestor notabilis"
+    },
+    {
+      "name": "Turmfalke",
+      "latin": "Falco tinnunculus"
+    },
+    {
+      "name": "Rohrweihe",
+      "latin": "Circus aeruginosus"
+    },
+    {
+      "name": "Waldbaumläufer",
+      "latin": "Certhia familiaris"
+    },
+    {
+      "name": "Rotstirngirlitz",
+      "latin": "Serinus pusillus"
+    },
+    {
+      "name": "Blewittkauz",
+      "latin": "Athene blewitti"
+    },
+    {
+      "name": "Goldfasan",
+      "latin": "Chrysolophus pictus"
+    },
+    {
+      "name": "Streifenprinie",
+      "latin": "Prinia gracilis"
+    },
+    {
+      "name": "Grandala",
+      "latin": "Grandala coelicolor"
+    },
+    {
+      "name": "Gebirgsstelze",
+      "latin": "Motacilla cinerea"
+    },
+    {
+      "name": "Kormoran",
+      "latin": "Phalacrocorax carbo"
+    },
+    {
+      "name": "Doppelhornvogel",
+      "latin": "Buceros bicornis"
+    },
+    {
+      "name": "Indische Trappe",
+      "latin": "Sypheotides indica"
+    },
+    {
+      "name": "Buntspecht",
+      "latin": "Dendrocopos major"
+    },
+    {
+      "name": "Großer Adjutant",
+      "latin": "Leptoptilos dubius"
+    },
+    {
+      "name": "Smaragdspint",
+      "latin": "Merops orientalis"
+    },
+    {
+      "name": "Buntfasan",
+      "latin": "Phasianus versicolor"
+    },
+    {
+      "name": "Himalaya-Glanzfasan",
+      "latin": "Lophophorus impejanus"
+    },
+    {
+      "name": "Hirtenmaina",
+      "latin": "Acridotheres tristis"
+    },
+    {
+      "name": "Flussuferläufer",
+      "latin": "Actitis hypoleucos"
+    },
+    {
+      "name": "Rotstirn-Schneidervogel",
+      "latin": "Orthotomus sutorius"
+    },
+    {
+      "name": "Krickente",
+      "latin": "Anas crecca"
+    },
+    {
+      "name": "Kupferschmied-Bartvogel",
+      "latin": "Psilopogon haemacephalus"
+    },
+    {
+      "name": "Nipponibis",
+      "latin": "Nipponia nippon"
+    },
+    {
+      "name": "Haubenlerche",
+      "latin": "Galerida cristata"
+    },
+    {
+      "name": "Weißflügelgimpel",
+      "latin": "Rhodospiza obsoleta"
+    },
+    {
+      "name": "Wüstensteinschmätzer",
+      "latin": "Oenanthe deserti"
+    },
+    {
+      "name": "Blässhuhn",
+      "latin": "Fulica atra"
+    },
+    {
+      "name": "Uhu",
+      "latin": "Bubo bubo"
+    },
+    {
+      "name": "Wiedehopf",
+      "latin": "Upupa epops"
+    },
+    {
+      "name": "Brahminenweih",
+      "latin": "Haliastur indus"
+    },
+    {
+      "name": "Bergfink",
+      "latin": "Fringilla montifringilla"
+    },
+    {
+      "name": "Braunwürger",
+      "latin": "Lanius cristatus"
+    },
+    {
+      "name": "Jagdelster",
+      "latin": "Cissa chinensis"
+    },
+    {
+      "name": "Garteniora",
+      "latin": "Aegithina tiphia"
+    },
+    {
+      "name": "Lasurmeise",
+      "latin": "Cyanistes cyanus"
+    },
+    {
+      "name": "Bayaweber",
+      "latin": "Ploceus philippinus"
+    },
+    {
+      "name": "Schwarzstorch",
+      "latin": "Ciconia nigra"
+    },
+    {
+      "name": "Bartmeise",
+      "latin": "Panurus biarmicus"
+    },
+    {
+      "name": "Königsdrongo",
+      "latin": "Dicrurus macrocercus"
+    },
+    {
+      "name": "Schwarznackenpirol",
+      "latin": "Oriolus chinensis"
+    },
+    {
+      "name": "Blaumerle",
+      "latin": "Monticola solitarius"
+    },
+    {
+      "name": "Ibisschnabel",
+      "latin": "Ibidorhyncha struthersii"
+    },
+    {
+      "name": "Grünflügeltaube",
+      "latin": "Chalcophaps indica"
+    },
+    {
+      "name": "Indischerkoel",
+      "latin": "Eudynamys scolopaceus"
+    },
+    {
+      "name": "Blauer Pfau",
+      "latin": "Pavo cristatus"
+    },
+    {
+      "name": "Indiengeier",
+      "latin": "Gyps indicus"
+    },
+    {
+      "name": "Dickschnabelkrähe",
+      "latin": "Corvus macrorhynchos"
+    },
+    {
+      "name": "Seidenreiher",
+      "latin": "Egretta garzetta"
+    },
+    {
+      "name": "Zwergtaucher",
+      "latin": "Tachybaptus ruficollis"
+    },
+    {
+      "name": "Flussregenpfeifer",
+      "latin": "Charadrius dubius"
+    },
+    {
+      "name": "Mandarinente",
+      "latin": "Aix galericulata"
+    },
+    {
+      "name": "Grünrücken-Nektarvogel",
+      "latin": "Cinnyris jugularis"
+    },
+    {
+      "name": "Maskeneule",
+      "latin": "Phodilus badius"
+    },
+    {
+      "name": "Dajaldrossel",
+      "latin": "Copsychus saularis"
+    },
+    {
+      "name": "Affenadler",
+      "latin": "Pithecophaga jefferyi"
+    },
+    {
+      "name": "Wasserrotschwanz",
+      "latin": "Phoenicurus fuliginosus"
+    },
+    {
+      "name": "Purpurreiher",
+      "latin": "Ardea purpurea"
+    },
+    {
+      "name": "Tigerfink",
+      "latin": "Amandava amandava"
+    },
+    {
+      "name": "Bankivahuhn",
+      "latin": "Gallus gallus"
+    },
+    {
+      "name": "Mandschurenkranich",
+      "latin": "Grus japonensis"
+    },
+    {
+      "name": "Rotsteißbülbül",
+      "latin": "Pycnonotus cafer"
+    },
+    {
+      "name": "Rotlappenkiebitz",
+      "latin": "Vanellus indicus"
+    },
+    {
+      "name": "Nashornalk",
+      "latin": "Cerorhinca monocerata"
+    },
+    {
+      "name": "Felsentaube",
+      "latin": "Columba livia"
+    },
+    {
+      "name": "Saatkrähe",
+      "latin": "Corvus frugilegus"
+    },
+    {
+      "name": "Halsbandsittich",
+      "latin": "Psittacula krameri"
+    },
+    {
+      "name": "Rosenstar",
+      "latin": "Pastor roseus"
+    },
+    {
+      "name": "Rostgans",
+      "latin": "Tadorna ferruginea"
+    },
+    {
+      "name": "Saruskranich",
+      "latin": "Antigone antigone"
+    },
+    {
+      "name": "Satyrtragopan",
+      "latin": "Tragopan satyra"
+    },
+    {
+      "name": "Muskatfink",
+      "latin": "Lonchura punctulata"
+    },
+    {
+      "name": "Zwergmennigvogel",
+      "latin": "Pericrocotus cinnamomeus"
+    },
+    {
+      "name": "Zwergsäger",
+      "latin": "Mergellus albellus"
+    },
+    {
+      "name": "Löffelstrandläufer",
+      "latin": "Calidris pygmaea"
+    },
+    {
+      "name": "Perlhalstaube",
+      "latin": "Spilopelia chinensis"
+    },
+    {
+      "name": "Schmuckkitta",
+      "latin": "Urocissa ornata"
+    },
+    {
+      "name": "Ceylonschwalm",
+      "latin": "Batrachostomus moniliger"
+    },
+    {
+      "name": "Storchschnabelliest",
+      "latin": "Pelargopsis capensis"
+    },
+    {
+      "name": "Wüstengimpel",
+      "latin": "Bucanetes githagineus"
+    },
+    {
+      "name": "Berghänfling",
+      "latin": "Linaria flavirostris"
+    },
+    {
+      "name": "Lazulischnäpper",
+      "latin": "Eumyias thalassinus"
+    },
+    {
+      "name": "Amethystkuckuck",
+      "latin": "Chrysococcyx xanthorhynchus"
+    },
+    {
+      "name": "Purpurhähnchen",
+      "latin": "Leptopoecile sophiae"
+    },
+    {
+      "name": "Weißhaubenhäherling",
+      "latin": "Garrulax leucolophus"
+    },
+    {
+      "name": "Weißkopf-Ruderente",
+      "latin": "Oxyura leucocephala"
+    },
+    {
+      "name": "Braunliest",
+      "latin": "Halcyon smyrnensis"
+    },
+    {
+      "name": "Weidenmeise",
+      "latin": "Poecile montanus"
+    },
+    {
+      "name": "Chinadommel",
+      "latin": "Ixobrychus sinensis"
+    },
+    {
+      "name": "Sperbertäubchen",
+      "latin": "Geopelia striata"
+    },
+    {
+      "name": "Glanzkrähe",
+      "latin": "Corvus splendens"
     }
   ]
 }
